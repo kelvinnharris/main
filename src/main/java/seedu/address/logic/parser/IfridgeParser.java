@@ -20,7 +20,7 @@ public class IfridgeParser {
     /**
      * Used for initial separation of command word and args.
      */
-    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<listType>\\S+)(?<others>.*)");
+    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<listType>\\S+)(?<listCommand>.*)");
 
     /**
      * Parses user input into command for execution.
@@ -36,12 +36,13 @@ public class IfridgeParser {
         }
 
         final String listType = matcher.group("listType");
-        final String others = matcher.group("others");
+        final String listCommand = matcher.group("listCommand");
         switch (listType) {
         case GroceryListParser.LIST_TYPE_WORD:
-            return new GroceryListParser().parseCommand(others);
+            return new GroceryListParser().parseCommand(listCommand);
+
         case TemplateListParser.LIST_TYPE_WORD:
-            return new TemplateListParser().parseCommand(others);
+            return new TemplateListParser().parseCommand(listCommand);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
