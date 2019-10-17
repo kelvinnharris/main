@@ -13,7 +13,7 @@ import seedu.address.model.food.GroceryItem;
 /**
  * An UI component that displays information of a {@code Person}.
  */
-public class PersonCard extends UiPart<Region> {
+public class GroceryItemCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
 
@@ -25,7 +25,7 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Food food;
+    public final Food groceryItem;
 
     @FXML
     private HBox cardPane;
@@ -40,15 +40,15 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    public PersonCard(Food food, int displayedIndex) {
+    public GroceryItemCard(Food groceryItem, int displayedIndex) {
         super(FXML);
-        this.food = food;
+        this.groceryItem = groceryItem;
         id.setText(displayedIndex + ". ");
-        name.setText(food.getName().fullName);
-        expiryDate.setText(((GroceryItem) food).getExpiryDate().expiryDate);
-        amount.setText(food.getAmount().fullAmt);
-        GroceryItem groceryItem = (GroceryItem) food;
-        groceryItem.getTags().stream()
+        name.setText(groceryItem.getName().fullName);
+        expiryDate.setText(((GroceryItem) groceryItem).getExpiryDate().expiryDate);
+        amount.setText(groceryItem.getAmount().fullAmt);
+        GroceryItem groceryItemCasted = (GroceryItem) groceryItem;
+        groceryItemCasted.getTags().stream()
               .sorted(Comparator.comparing(tag -> tag.tagName))
                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
@@ -61,13 +61,13 @@ public class PersonCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonCard)) {
+        if (!(other instanceof GroceryItemCard)) {
             return false;
         }
 
         // state check
-        PersonCard card = (PersonCard) other;
+        GroceryItemCard card = (GroceryItemCard) other;
         return id.getText().equals(card.id.getText())
-                && food.equals(card.food);
+                && groceryItem.equals(card.groceryItem);
     }
 }

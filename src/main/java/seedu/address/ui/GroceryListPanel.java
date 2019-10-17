@@ -13,32 +13,32 @@ import seedu.address.model.food.GroceryItem;
 /**
  * Panel containing the list of persons.
  */
-public class PersonListPanel extends UiPart<Region> {
+public class GroceryListPanel extends UiPart<Region> {
     private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+    private final Logger logger = LogsCenter.getLogger(GroceryListPanel.class);
 
     @FXML
-    private ListView<GroceryItem> personListView;
+    private ListView<GroceryItem> groceryListView;
 
-    public PersonListPanel(ObservableList<GroceryItem> foodList) {
+    public GroceryListPanel(ObservableList<GroceryItem> groceryList) {
         super(FXML);
-        personListView.setItems(foodList);
-        personListView.setCellFactory(listView -> new PersonListViewCell());
+        groceryListView.setItems(groceryList);
+        groceryListView.setCellFactory(listView -> new GroceryListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
      */
-    class PersonListViewCell extends ListCell<GroceryItem> {
+    class GroceryListViewCell extends ListCell<GroceryItem> {
         @Override
-        protected void updateItem(GroceryItem food, boolean empty) {
-            super.updateItem(food, empty);
+        protected void updateItem(GroceryItem groceryItem, boolean empty) {
+            super.updateItem(groceryItem, empty);
 
-            if (empty || food == null) {
+            if (empty || groceryItem == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(food, getIndex() + 1).getRoot());
+                setGraphic(new GroceryItemCard(groceryItem, getIndex() + 1).getRoot());
             }
         }
     }

@@ -65,9 +65,9 @@ public class JsonAdaptedGroceryItem {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
     public GroceryItem toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> groceryItemTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+            groceryItemTags.add(tag.toModelType());
         }
 
         if (name == null) {
@@ -80,7 +80,7 @@ public class JsonAdaptedGroceryItem {
         final Amount modelAmount = new Amount(amount);
         final ExpiryDate modelExpiryDate = new ExpiryDate(expiryDate);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Set<Tag> modelTags = new HashSet<>(groceryItemTags);
         return new GroceryItem(modelName, modelAmount, modelExpiryDate, modelTags);
     }
 

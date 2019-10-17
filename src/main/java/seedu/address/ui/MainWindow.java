@@ -31,7 +31,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private GroceryListPanel groceryListPanel;
     private TemplateListPanel templateListPanel;
     private TemplateItemPanel templateItemPanel;
     private WasteListPanel wasteListPanel;
@@ -116,8 +116,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredGroceryItemList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        groceryListPanel = new GroceryListPanel(logic.getFilteredGroceryItemList());
+        personListPanelPlaceholder.getChildren().add(groceryListPanel.getRoot());
 
 
 
@@ -193,8 +193,8 @@ public class MainWindow extends UiPart<Stage> {
     */
 
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public GroceryListPanel getGroceryListPanel() {
+        return groceryListPanel;
     }
 
     public TemplateListPanel getTemplateListPanel() {
