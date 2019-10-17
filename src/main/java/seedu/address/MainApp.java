@@ -26,8 +26,8 @@ import seedu.address.model.TemplateList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WasteList;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.GroceryListStorage;
+import seedu.address.storage.JsonGroceryListStorage;
 import seedu.address.storage.JsonTemplateItemStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
@@ -64,10 +64,10 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        GroceryListStorage groceryListStorage = new JsonGroceryListStorage(userPrefs.getAddressBookFilePath());
         TemplateListStorage templateListStorage = new JsonTemplateItemStorage(userPrefs.getTemplateListFilePath());
         WasteListStorage wasteListStorage = new JsonWasteListStorage(userPrefs.getWasteListFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, templateListStorage, wasteListStorage);
+        storage = new StorageManager(groceryListStorage, userPrefsStorage, templateListStorage, wasteListStorage);
 
         initLogging(config);
 
@@ -93,7 +93,7 @@ public class MainApp extends Application {
         ReadOnlyWasteList initialWasteListData;
 
         try {
-            addressBookOptional = storage.readAddressBook();
+            addressBookOptional = storage.readGroceryList();
             templateListOptional = storage.readTemplateList();
             wasteListOptional = storage.readWasteList();
             if (!addressBookOptional.isPresent()) {

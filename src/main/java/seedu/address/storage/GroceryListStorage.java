@@ -11,12 +11,12 @@ import seedu.address.model.ReadOnlyGroceryList;
 /**
  * Represents a storage for {@link GroceryList}.
  */
-public interface AddressBookStorage {
+public interface GroceryListStorage {
 
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getGroceryListFilePath();
 
     /**
      * Returns AddressBook data as a {@link ReadOnlyGroceryList}.
@@ -24,23 +24,23 @@ public interface AddressBookStorage {
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyGroceryList> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyGroceryList> readGroceryList() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getGroceryListFilePath()
      */
-    Optional<ReadOnlyGroceryList> readAddressBook(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyGroceryList> readGroceryList(Path filePath) throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyGroceryList} to the storage.
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyGroceryList addressBook) throws IOException;
+    void saveGroceryList(ReadOnlyGroceryList addressBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyGroceryList)
+     * @see #saveGroceryList(ReadOnlyGroceryList)
      */
-    void saveAddressBook(ReadOnlyGroceryList addressBook, Path filePath) throws IOException;
+    void saveGroceryList(ReadOnlyGroceryList addressBook, Path filePath) throws IOException;
 
 }

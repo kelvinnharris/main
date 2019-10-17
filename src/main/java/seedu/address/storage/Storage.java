@@ -15,7 +15,7 @@ import seedu.address.storage.wastelist.WasteListStorage;
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, UserPrefsStorage, TemplateListStorage, WasteListStorage {
+public interface Storage extends GroceryListStorage, UserPrefsStorage, TemplateListStorage, WasteListStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -24,13 +24,13 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage, TemplateL
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Path getAddressBookFilePath();
+    Path getGroceryListFilePath();
 
     @Override
-    Optional<ReadOnlyGroceryList> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyGroceryList> readGroceryList() throws DataConversionException, IOException;
 
     @Override
-    void saveAddressBook(ReadOnlyGroceryList addressBook) throws IOException;
+    void saveGroceryList(ReadOnlyGroceryList addressBook) throws IOException;
 
     @Override
     Path getTemplateListFilePath();

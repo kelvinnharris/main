@@ -47,7 +47,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getGroceryList());
+            storage.saveGroceryList(model.getGroceryList());
             storage.saveTemplateList(model.getTemplateList());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);

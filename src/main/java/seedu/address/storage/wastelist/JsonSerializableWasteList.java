@@ -12,7 +12,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ReadOnlyWasteList;
 import seedu.address.model.WasteList;
 import seedu.address.model.food.GroceryItem;
-import seedu.address.storage.JsonAdaptedFood;
+import seedu.address.storage.JsonAdaptedGroceryItem;
 
 /**
  * An Immutable WasteList that is serializable to JSON format.
@@ -20,13 +20,13 @@ import seedu.address.storage.JsonAdaptedFood;
 @JsonRootName(value = "wastelist")
 public class JsonSerializableWasteList {
 
-    private final List<JsonAdaptedFood> wasteList = new ArrayList<>();
+    private final List<JsonAdaptedGroceryItem> wasteList = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableWasteList(@JsonProperty("wasteitems") List<JsonAdaptedFood> wasteitems) {
+    public JsonSerializableWasteList(@JsonProperty("wasteitems") List<JsonAdaptedGroceryItem> wasteitems) {
         // This class will be modified such that the field @JsonProperty will say the waste month
         this.wasteList.addAll(wasteitems);
     }
@@ -37,7 +37,7 @@ public class JsonSerializableWasteList {
      * @param source future changes to this will not affect the created {@code JsonSerializableWasteList}.
      */
     public JsonSerializableWasteList(ReadOnlyWasteList source) {
-        wasteList.addAll(source.getWasteList().stream().map(JsonAdaptedFood::new).collect(Collectors.toList()));
+        wasteList.addAll(source.getWasteList().stream().map(JsonAdaptedGroceryItem::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,8 +47,8 @@ public class JsonSerializableWasteList {
      */
     public WasteList toModelType() throws IllegalValueException {
         WasteList wasteList = new WasteList();
-        for (JsonAdaptedFood jsonAdaptedFood : this.wasteList) {
-            GroceryItem food = jsonAdaptedFood.toModelType();
+        for (JsonAdaptedGroceryItem jsonAdaptedGroceryItem : this.wasteList) {
+            GroceryItem food = jsonAdaptedGroceryItem.toModelType();
             wasteList.addWasteItem(food);
         }
         return wasteList;
