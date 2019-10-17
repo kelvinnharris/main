@@ -21,7 +21,7 @@ import seedu.address.model.food.exceptions.FoodNotFoundException;
  *
  * @see Food#isSameFood(Food)
  */
-public class UniqueFoodList implements Iterable<GroceryItem> {
+public class UniqueGroceryList implements Iterable<GroceryItem> {
 
     private final ObservableList<GroceryItem> internalList = FXCollections.observableArrayList();
     private final ObservableList<GroceryItem> internalUnmodifiableList =
@@ -71,7 +71,7 @@ public class UniqueFoodList implements Iterable<GroceryItem> {
         }
     }
 
-    public void setPersons(UniqueFoodList replacement) {
+    public void setGroceryList(UniqueGroceryList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -80,9 +80,9 @@ public class UniqueFoodList implements Iterable<GroceryItem> {
      * Replaces the contents of this list with {@code persons}.
      * {@code persons} must not contain duplicate persons.
      */
-    public void setPersons(List<GroceryItem> foods) {
-        requireAllNonNull(foods);
-        internalList.setAll(foods);
+    public void setGroceryList(List<GroceryItem> groceryItems) {
+        requireAllNonNull(groceryItems);
+        internalList.setAll(groceryItems);
     }
 
     /**
@@ -100,8 +100,8 @@ public class UniqueFoodList implements Iterable<GroceryItem> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniqueFoodList // instanceof handles nulls
-                        && internalList.equals(((UniqueFoodList) other).internalList));
+                || (other instanceof UniqueGroceryList // instanceof handles nulls
+                        && internalList.equals(((UniqueGroceryList) other).internalList));
     }
 
     @Override
@@ -112,10 +112,10 @@ public class UniqueFoodList implements Iterable<GroceryItem> {
     /**
      * Returns true if {@code persons} contains only unique persons.
      */
-    private boolean personsAreUnique(List<GroceryItem> foods) {
-        for (int i = 0; i < foods.size() - 1; i++) {
-            for (int j = i + 1; j < foods.size(); j++) {
-                if (foods.get(i).isSameFood(foods.get(j))) {
+    private boolean groceryItemsAreUnique(List<GroceryItem> groceryItems) {
+        for (int i = 0; i < groceryItems.size() - 1; i++) {
+            for (int j = i + 1; j < groceryItems.size(); j++) {
+                if (groceryItems.get(i).isSameFood(groceryItems.get(j))) {
                     return false;
                 }
             }

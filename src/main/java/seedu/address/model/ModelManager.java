@@ -23,7 +23,7 @@ import seedu.address.model.waste.WasteMonth;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook groceryList;
+    private final GroceryList groceryList;
     private final TemplateList templateList;
     private final WasteList wasteList;
     private final UserPrefs userPrefs;
@@ -34,7 +34,7 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook groceryList, ReadOnlyUserPrefs userPrefs,
+    public ModelManager(ReadOnlyGroceryList groceryList, ReadOnlyUserPrefs userPrefs,
                         ReadOnlyTemplateList templateList, ReadOnlyWasteList wasteList) {
         super();
         requireAllNonNull(groceryList, userPrefs, templateList);
@@ -42,7 +42,7 @@ public class ModelManager implements Model {
         logger.fine("Initializing with address book: " + groceryList + " and user prefs " + userPrefs
             + " and template list " + templateList);
 
-        this.groceryList = new AddressBook(groceryList);
+        this.groceryList = new GroceryList(groceryList);
         this.templateList = new TemplateList(templateList);
         this.wasteList = new WasteList(wasteList);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -52,7 +52,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new TemplateList(),
+        this(new GroceryList(), new UserPrefs(), new TemplateList(),
                 new WasteList());
     }
 
@@ -126,12 +126,12 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setGroceryList(ReadOnlyAddressBook groceryList) {
+    public void setGroceryList(ReadOnlyGroceryList groceryList) {
         this.groceryList.resetData(groceryList);
     }
 
     @Override
-    public ReadOnlyAddressBook getGroceryList() {
+    public ReadOnlyGroceryList getGroceryList() {
         return groceryList;
     }
 

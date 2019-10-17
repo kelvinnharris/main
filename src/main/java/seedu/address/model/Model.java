@@ -64,10 +64,10 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setGroceryList(ReadOnlyAddressBook groceryList);
+    void setGroceryList(ReadOnlyGroceryList groceryList);
 
     /** Returns the AddressBook */
-    ReadOnlyAddressBook getGroceryList();
+    ReadOnlyGroceryList getGroceryList();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.

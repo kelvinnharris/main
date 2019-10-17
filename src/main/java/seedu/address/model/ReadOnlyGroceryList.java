@@ -6,7 +6,7 @@ import seedu.address.model.food.GroceryItem;
 /**
  * Unmodifiable view of an address book
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyGroceryList {
 
     /**
      * Returns an unmodifiable view of the persons list.

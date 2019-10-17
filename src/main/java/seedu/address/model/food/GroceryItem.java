@@ -25,6 +25,21 @@ public class GroceryItem extends Food {
         return expiryDate;
     }
 
+    @Override
+    public boolean isSameFood(Food otherFood) {
+        if (otherFood instanceof GroceryItem) {
+            return false;
+        }
+
+        if (otherFood == this) {
+            return true;
+        }
+
+        return otherFood != null
+                && otherFood.getName().equals(getName())
+                && ((GroceryItem) otherFood).getExpiryDate().equals(getExpiryDate());
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

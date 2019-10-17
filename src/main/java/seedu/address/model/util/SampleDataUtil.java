@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.GroceryList;
+import seedu.address.model.ReadOnlyGroceryList;
 import seedu.address.model.ReadOnlyTemplateList;
 import seedu.address.model.ReadOnlyWasteList;
 import seedu.address.model.TemplateList;
@@ -38,8 +38,8 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyGroceryList getSampleAddressBook() {
+        GroceryList sampleAb = new GroceryList();
         for (Food sampleFood : getSampleFoods()) {
             sampleAb.addPerson((GroceryItem) sampleFood);
         }

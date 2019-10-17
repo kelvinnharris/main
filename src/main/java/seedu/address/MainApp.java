@@ -15,10 +15,10 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.AddressBook;
+import seedu.address.model.GroceryList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyGroceryList;
 import seedu.address.model.ReadOnlyTemplateList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyWasteList;
@@ -85,10 +85,10 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
 
-        Optional<ReadOnlyAddressBook> addressBookOptional;
+        Optional<ReadOnlyGroceryList> addressBookOptional;
         Optional<ReadOnlyTemplateList> templateListOptional;
         Optional<ReadOnlyWasteList> wasteListOptional;
-        ReadOnlyAddressBook initialAddressBookData;
+        ReadOnlyGroceryList initialAddressBookData;
         ReadOnlyTemplateList initialTemplateListData;
         ReadOnlyWasteList initialWasteListData;
 
@@ -106,11 +106,11 @@ public class MainApp extends Application {
             initialTemplateListData = templateListOptional.orElseGet(SampleDataUtil::getSampleTemplateList);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialAddressBookData = new AddressBook();
+            initialAddressBookData = new GroceryList();
             initialTemplateListData = new TemplateList();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialAddressBookData = new AddressBook();
+            initialAddressBookData = new GroceryList();
             initialTemplateListData = new TemplateList();
         }
 

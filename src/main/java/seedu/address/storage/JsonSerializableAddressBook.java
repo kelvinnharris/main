@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.GroceryList;
+import seedu.address.model.ReadOnlyGroceryList;
 import seedu.address.model.food.GroceryItem;
 
 /**
@@ -36,7 +36,7 @@ class JsonSerializableAddressBook {
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
+    public JsonSerializableAddressBook(ReadOnlyGroceryList source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedFood::new).collect(Collectors.toList()));
     }
 
@@ -45,8 +45,8 @@ class JsonSerializableAddressBook {
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public GroceryList toModelType() throws IllegalValueException {
+        GroceryList addressBook = new GroceryList();
         for (JsonAdaptedFood jsonAdaptedFood : persons) {
             GroceryItem food = jsonAdaptedFood.toModelType();
             if (addressBook.hasPerson(food)) {

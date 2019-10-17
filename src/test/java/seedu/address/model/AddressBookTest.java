@@ -20,7 +20,7 @@ import seedu.address.testutil.GroceryItemBuilder;
 
 public class AddressBookTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final GroceryList addressBook = new GroceryList();
 
     @Test
     public void constructor() {
@@ -34,7 +34,7 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
+        GroceryList newData = getTypicalAddressBook();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
@@ -85,10 +85,10 @@ public class AddressBookTest {
     /**
      * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class GroceryListStub implements ReadOnlyGroceryList {
         private final ObservableList<GroceryItem> foods = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<GroceryItem> foods) {
+        GroceryListStub(Collection<GroceryItem> foods) {
             this.foods.setAll(foods);
         }
 

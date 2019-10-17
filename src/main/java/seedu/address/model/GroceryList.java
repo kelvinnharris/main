@@ -7,15 +7,15 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.food.Food;
 import seedu.address.model.food.GroceryItem;
-import seedu.address.model.food.UniqueFoodList;
+import seedu.address.model.food.UniqueGroceryList;
 
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class GroceryList implements ReadOnlyGroceryList {
 
-    private final UniqueFoodList persons;
+    private final UniqueGroceryList persons;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,15 +25,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniqueFoodList();
+        persons = new UniqueGroceryList();
     }
 
-    public AddressBook() {}
+    public GroceryList() {}
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public GroceryList(ReadOnlyGroceryList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -45,13 +45,13 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code persons} must not contain duplicate persons.
      */
     public void setPersons(List<GroceryItem> foods) {
-        this.persons.setPersons(foods);
+        this.persons.setGroceryList(foods);
     }
 
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyGroceryList newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
@@ -110,8 +110,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                || (other instanceof GroceryList // instanceof handles nulls
+                && persons.equals(((GroceryList) other).persons));
     }
 
     @Override

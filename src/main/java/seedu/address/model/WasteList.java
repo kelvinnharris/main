@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.food.GroceryItem;
-import seedu.address.model.food.UniqueFoodList;
+import seedu.address.model.food.UniqueGroceryList;
 import seedu.address.model.waste.WasteMonth;
 import seedu.address.model.waste.WasteStatistic;
 
@@ -19,10 +19,10 @@ public class WasteList implements ReadOnlyWasteList {
 
     private static TreeMap<WasteMonth, WasteList> wasteArchive;
     private static WasteMonth currentWasteMonth;
-    private final UniqueFoodList wasteList;
+    private final UniqueGroceryList wasteList;
 
     {
-        wasteList = new UniqueFoodList();
+        wasteList = new UniqueGroceryList();
     }
 
     public WasteList() {}
@@ -41,7 +41,7 @@ public class WasteList implements ReadOnlyWasteList {
      * Replaces the contents of the waste list with {@code foods}.
      */
     public void setWasteList(List<GroceryItem> foods) {
-        this.wasteList.setPersons(foods);
+        this.wasteList.setGroceryList(foods);
     }
 
     /**
