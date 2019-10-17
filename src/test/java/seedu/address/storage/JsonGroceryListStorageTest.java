@@ -71,14 +71,14 @@ public class JsonGroceryListStorageTest {
         //assertEquals(original, new AddressBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(HOON);
-        original.removePerson(ALICE);
+        original.addGroceryItem(HOON);
+        original.removeGroceryItem(ALICE);
         jsonGroceryListStorage.saveGroceryList(original, filePath);
         readBack = jsonGroceryListStorage.readGroceryList(filePath).get();
         //assertEquals(original, new AddressBook(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(IDA);
+        original.addGroceryItem(IDA);
         jsonGroceryListStorage.saveGroceryList(original); // file path not specified
         readBack = jsonGroceryListStorage.readGroceryList().get(); // file path not specified
         //assertEquals(original, new AddressBook(readBack));

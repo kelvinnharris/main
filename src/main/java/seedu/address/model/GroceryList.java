@@ -15,7 +15,7 @@ import seedu.address.model.food.UniqueGroceryList;
  */
 public class GroceryList implements ReadOnlyGroceryList {
 
-    private final UniqueGroceryList persons;
+    private final UniqueGroceryList groceryList;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,7 +25,7 @@ public class GroceryList implements ReadOnlyGroceryList {
      *   among constructors.
      */
     {
-        persons = new UniqueGroceryList();
+        groceryList = new UniqueGroceryList();
     }
 
     public GroceryList() {}
@@ -44,8 +44,8 @@ public class GroceryList implements ReadOnlyGroceryList {
      * Replaces the contents of the person list with {@code persons}.
      * {@code persons} must not contain duplicate persons.
      */
-    public void setPersons(List<GroceryItem> foods) {
-        this.persons.setGroceryList(foods);
+    public void setGroceryList(List<GroceryItem> foods) {
+        this.groceryList.setGroceryList(foods);
     }
 
     /**
@@ -54,7 +54,7 @@ public class GroceryList implements ReadOnlyGroceryList {
     public void resetData(ReadOnlyGroceryList newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setGroceryList(newData.getPersonList());
     }
 
     //// person-level operations
@@ -64,15 +64,15 @@ public class GroceryList implements ReadOnlyGroceryList {
      */
     public boolean hasPerson(GroceryItem food) {
         requireNonNull(food);
-        return persons.contains(food);
+        return groceryList.contains(food);
     }
 
     /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
-    public void addPerson(GroceryItem p) {
-        persons.add(p);
+    public void addGroceryItem(GroceryItem p) {
+        groceryList.add(p);
     }
 
     /**
@@ -80,42 +80,41 @@ public class GroceryList implements ReadOnlyGroceryList {
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-    public void setGroceryItem(GroceryItem target, GroceryItem editedFood) {
-        requireNonNull(editedFood);
+    public void setGroceryItem(GroceryItem target, GroceryItem editedGroceryItem) {
+        requireNonNull(editedGroceryItem);
 
-        persons.setPerson(target, editedFood);
+        groceryList.setGroceryItem(target, editedGroceryItem);
     }
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Food key) {
-        persons.remove(key);
+    public void removeGroceryItem(Food key) {
+        groceryList.remove(key);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
-        // TODO: refine later
+        return groceryList.asUnmodifiableObservableList().size() + " grocery items";
     }
 
     @Override
     public ObservableList<GroceryItem> getPersonList() {
-        return persons.asUnmodifiableObservableList();
+        return groceryList.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof GroceryList // instanceof handles nulls
-                && persons.equals(((GroceryList) other).persons));
+                && groceryList.equals(((GroceryList) other).groceryList));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return groceryList.hashCode();
     }
 }

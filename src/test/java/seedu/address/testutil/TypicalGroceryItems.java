@@ -54,7 +54,7 @@ public class TypicalGroceryItems {
     public static GroceryList getTypicalAddressBook() {
         GroceryList ab = new GroceryList();
         for (GroceryItem food : getTypicalPersons()) {
-            ab.addPerson(food);
+            ab.addGroceryItem(food);
         }
         return ab;
     }

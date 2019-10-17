@@ -147,12 +147,12 @@ public class ModelManager implements Model {
     }
 
     public void deleteGroceryItem(GroceryItem target) {
-        groceryList.removePerson(target);
+        groceryList.removeGroceryItem(target);
     }
 
     @Override
     public void addGroceryItem(GroceryItem food) {
-        groceryList.addPerson(food);
+        groceryList.addGroceryItem(food);
         updateFilteredGroceryItemList(PREDICATE_SHOW_ALL_GROCERY_ITEMS);
     }
 

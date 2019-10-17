@@ -102,7 +102,7 @@ public class MainApp extends Application {
             if (!templateListOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample TemplateList");
             }
-            initialAddressBookData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialAddressBookData = addressBookOptional.orElseGet(SampleDataUtil::getSampleGroceryList);
             initialTemplateListData = templateListOptional.orElseGet(SampleDataUtil::getSampleTemplateList);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");

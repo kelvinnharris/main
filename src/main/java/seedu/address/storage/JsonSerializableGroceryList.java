@@ -52,7 +52,7 @@ class JsonSerializableGroceryList {
             if (addressBook.hasPerson(food)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_GROCERY_ITEM);
             }
-            addressBook.addPerson(food);
+            addressBook.addGroceryItem(food);
         }
         return addressBook;
     }

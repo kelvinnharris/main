@@ -27,23 +27,25 @@ import seedu.address.model.waste.WasteMonth;
 public class SampleDataUtil {
 
     // ============================= Grocery Item Sample List ============================= //
-    public static Food[] getSampleFoods() {
-        return new Food[] {
-            new Food(new Name("Alex Yeoh"), new Amount("300g")),
-            new Food(new Name("Bernice Yu"), new Amount("300g")),
-            new Food(new Name("Charlotte Oliveiro"), new Amount("300g")),
-            new Food(new Name("David Li"), new Amount("300g")),
-            new Food(new Name("Irfan Ibrahim"), new Amount("300g")),
-            new Food(new Name("Roy Balakrishnan"), new Amount("300g"))
+    public static GroceryItem[] getSampleGroceryItems() {
+        return new GroceryItem[] {
+                new GroceryItem(new Name("Minced beef"), new Amount("300g"),
+                        new ExpiryDate("30.09.2019"), getTagSet("meat")),
+                new GroceryItem(new Name("Chicken breast"), new Amount("200g"),
+                        new ExpiryDate("30.10.2019"), getTagSet("meat", "chicken")),
+                new GroceryItem(new Name("Strawberry"), new Amount("500ml"),
+                        new ExpiryDate("25.05.2020"), getTagSet("fat")),
+                new GroceryItem(new Name("Spaghetti"), new Amount("1unit"),
+                    new ExpiryDate("19.11.2019"), getTagSet("dish")),
         };
     }
 
-    public static ReadOnlyGroceryList getSampleAddressBook() {
-        GroceryList sampleAb = new GroceryList();
-        for (Food sampleFood : getSampleFoods()) {
-            sampleAb.addPerson((GroceryItem) sampleFood);
+    public static ReadOnlyGroceryList getSampleGroceryList() {
+        GroceryList sampleGl = new GroceryList();
+        for (Food sampleGroceryItem : getSampleGroceryItems()) {
+            sampleGl.addGroceryItem((GroceryItem) sampleGroceryItem);
         }
-        return sampleAb;
+        return sampleGl;
     }
 
     /**
