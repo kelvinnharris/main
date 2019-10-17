@@ -153,7 +153,7 @@ public class ModelManager implements Model {
     @Override
     public void addGroceryItem(GroceryItem food) {
         groceryList.addPerson(food);
-        updateFilteredGroceryItemList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredGroceryItemList(PREDICATE_SHOW_ALL_GROCERY_ITEMS);
     }
 
     @Override

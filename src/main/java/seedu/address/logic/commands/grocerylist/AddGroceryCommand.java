@@ -13,7 +13,7 @@ import seedu.address.model.Model;
 import seedu.address.model.food.GroceryItem;
 
 /**
- * Adds a person to the address book.
+ * Adds a grocery item to the grocery list.
  */
 public class AddGroceryCommand extends Command {
 
@@ -33,7 +33,7 @@ public class AddGroceryCommand extends Command {
             + PREFIX_TAG + "fruit";
 
     public static final String MESSAGE_SUCCESS = "New food item added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This food item already exists in the grocery list";
+    public static final String MESSAGE_DUPLICATE_GROCERY_ITEM = "This grocery item already exists in the grocery list";
 
     private final GroceryItem toAdd;
 
@@ -50,7 +50,7 @@ public class AddGroceryCommand extends Command {
         requireNonNull(model);
 
         if (model.hasGroceryItem(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_GROCERY_ITEM);
         }
 
         model.addGroceryItem(toAdd);

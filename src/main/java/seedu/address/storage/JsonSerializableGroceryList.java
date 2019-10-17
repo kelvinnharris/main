@@ -17,9 +17,9 @@ import seedu.address.model.food.GroceryItem;
  * An Immutable AddressBook that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
-class JsonSerializableAddressBook {
+class JsonSerializableGroceryList {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_GROCERY_ITEM = "Grocery list contains duplicate grocery item(s)";
 
     private final List<JsonAdaptedFood> persons = new ArrayList<>();
 
@@ -27,7 +27,7 @@ class JsonSerializableAddressBook {
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedFood> persons) {
+    public JsonSerializableGroceryList(@JsonProperty("persons") List<JsonAdaptedFood> persons) {
         this.persons.addAll(persons);
     }
 
@@ -36,7 +36,7 @@ class JsonSerializableAddressBook {
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyGroceryList source) {
+    public JsonSerializableGroceryList(ReadOnlyGroceryList source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedFood::new).collect(Collectors.toList()));
     }
 
@@ -50,7 +50,7 @@ class JsonSerializableAddressBook {
         for (JsonAdaptedFood jsonAdaptedFood : persons) {
             GroceryItem food = jsonAdaptedFood.toModelType();
             if (addressBook.hasPerson(food)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_GROCERY_ITEM);
             }
             addressBook.addPerson(food);
         }

@@ -16,7 +16,7 @@ import seedu.address.model.waste.WasteMonth;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<GroceryItem> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<GroceryItem> PREDICATE_SHOW_ALL_GROCERY_ITEMS = unused -> true;
     Predicate<UniqueTemplateItems> PREDICATE_SHOW_ALL_TEMPLATES = unused -> true;
     Predicate<GroceryItem> PREDICATE_SHOW_ALL_WASTE_ITEMS = unused -> true;
 

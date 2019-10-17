@@ -17,6 +17,7 @@ import seedu.address.logic.commands.grocerylist.DeleteGroceryCommand;
 import seedu.address.logic.commands.grocerylist.EditGroceryCommand;
 import seedu.address.logic.commands.grocerylist.ListGroceryCommand;
 import seedu.address.logic.commands.grocerylist.ReminderCommand;
+import seedu.address.logic.commands.grocerylist.UseGroceryCommand;
 import seedu.address.logic.parser.defaults.ListDefaultCommandParser;
 import seedu.address.logic.parser.defaults.ReminderDefaultCommandParser;
 import seedu.address.logic.parser.defaults.SortDefaultCommandParser;
@@ -64,7 +65,7 @@ public class GroceryListParser {
         case ReminderCommand.COMMAND_WORD:
             return new ReminderCommandParser().parse(arguments, iFridgeSettings.getNumberOfDays());
 
-        case "use":
+        case UseGroceryCommand.COMMAND_WORD:
             return new UseGroceryCommandParser().parse(arguments);
 
         case ReminderDefaultCommand.COMMAND_WORD:

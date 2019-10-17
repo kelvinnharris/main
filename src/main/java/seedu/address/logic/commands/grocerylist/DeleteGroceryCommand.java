@@ -13,7 +13,7 @@ import seedu.address.model.Model;
 import seedu.address.model.food.GroceryItem;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes a grocery item identified using its displayed index from the grocery list.
  */
 public class DeleteGroceryCommand extends Command {
 
