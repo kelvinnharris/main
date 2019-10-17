@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.grocerylist;
+package seedu.address.logic.parser.templatelist.template;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
@@ -8,21 +8,21 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.grocerylist.AddGroceryCommand;
-import seedu.address.logic.commands.grocerylist.DeleteGroceryCommand;
-import seedu.address.logic.commands.grocerylist.EditGroceryCommand;
-import seedu.address.logic.commands.grocerylist.ListGroceryCommand;
+import seedu.address.logic.commands.templatelist.template.AddTemplateItemCommand;
+import seedu.address.logic.commands.templatelist.template.DeleteTemplateItemCommand;
+import seedu.address.logic.commands.templatelist.template.EditTemplateItemCommand;
+import seedu.address.logic.commands.templatelist.template.ListTemplateItemCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses user input.
  */
-public class GroceryListParser {
+public class TemplateItemParser {
 
     /**
      * Used for initial separation of command word and args.
      */
-    public static final String LIST_TYPE_WORD = "glist";
+    public static final String LIST_TYPE_WORD = "template";
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
     /**
@@ -41,20 +41,18 @@ public class GroceryListParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
-        case AddGroceryCommand.COMMAND_WORD:
-            return new AddGroceryCommandParser().parse(arguments);
 
-        case ListGroceryCommand.COMMAND_WORD:
-            return new ListGroceryCommand();
+        case AddTemplateItemCommand.COMMAND_WORD:
+            return new AddTemplateItemCommandParser().parse(arguments);
 
-        case EditGroceryCommand.COMMAND_WORD:
-            return new EditGroceryCommandParser().parse(arguments);
+        case EditTemplateItemCommand.COMMAND_WORD:
+            return new EditTemplateItemCommandParser().parse(arguments);
 
-        case DeleteGroceryCommand.COMMAND_WORD:
-            return new DeleteGroceryCommandParser().parse(arguments);
+        case DeleteTemplateItemCommand.COMMAND_WORD:
+            return new DeleteTemplateItemCommandParser().parse(arguments);
 
-        case "use":
-            return new UseGroceryCommandParser().parse(arguments);
+        case ListTemplateItemCommand.COMMAND_WORD:
+            return new ListTemplateItemCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

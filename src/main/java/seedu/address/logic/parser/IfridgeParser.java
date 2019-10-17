@@ -10,7 +10,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.grocerylist.GroceryListParser;
-import seedu.address.logic.parser.templateList.TemplateListParser;
+import seedu.address.logic.parser.templatelist.TemplateListParser;
 
 /**
  * Parses user input.
